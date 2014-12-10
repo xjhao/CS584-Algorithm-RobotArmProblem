@@ -61,9 +61,7 @@ if __name__ == "__main__":
 	l = randomArmLength(SEGNUM, MAXARM)
 	
 	print "The arm segments are:", l
-
 	(min, mins) = minS(l,s)
-
 	print "One of the optimal s is:", mins
 	print "The length of the packed arm is:", min
 
