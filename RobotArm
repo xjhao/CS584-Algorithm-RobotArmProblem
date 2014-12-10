@@ -1,0 +1,79 @@
+import os
+import sys
+import cPickle as CP
+import math
+import random
+import copy
+
+
+def generateS(n):
+	for j in range (0, n + 1):
+		ss = copy.deepcopy(s)
+		for i in range (0, len(s)):
+			s[i].append(values[0])
+		for i in range (0, len(ss)):
+			ss[i].append(values[1])
+		for i in range (0,len(ss)):
+			s.append(ss[i])
+	return s
+
+def randomArmLength(n, max):
+	l = [0]
+	for i in range (1, n + 1):
+		l.append(random.randint(1, max))
+
+	return l
+
+def mOne(l, si):
+	min = si[0] * l[0]
+	sum = 0
+	for i in range(0, len(l)):
+		sum += si[i] * l[i]
+		if sum < min:
+			min = sum
+	return min
+
+def mTwo(l, si):
+	max = si[0] * l[0]
+	sum = 0
+	for i in range(0, len(l)):
+		sum += si[i] * l[i]
+		if sum > max:
+			max = sum
+	return max
+
+def minS(l, s):
+	min = SEGNUM * MAXARM
+	mins = s[0]
+	for si in s:
+		temp = mTwo(l, si) - mOne(l, si)
+		if temp < min:
+			min = temp
+			mins = si
+
+	return (min, mins)
+
+
+
+if __name__ == "__main__":
+	values = [-1, 1]
+	SEGNUM = 60
+	MAXARM = 10
+	s = [[]]
+	
+	s = generateS(SEGNUM)
+	l = randomArmLength(SEGNUM, MAXARM)
+	
+	print "The arm segments are:", l
+
+	(min, mins) = minS(l,s)
+
+	print "One of the optimal s is:", mins
+	print "The length of the packed arm is:", min
+
+
+
+
+
+
+
