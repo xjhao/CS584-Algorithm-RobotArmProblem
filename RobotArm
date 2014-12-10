@@ -1,10 +1,8 @@
 import os
 import sys
-import cPickle as CP
 import math
 import random
 import copy
-
 
 def generateS(n):
 	for j in range (0, n + 1):
@@ -52,8 +50,6 @@ def minS(l, s):
 			mins = si
 
 	return (min, mins)
-
-
 
 if __name__ == "__main__":
 	values = [-1, 1]
